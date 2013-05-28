@@ -17,7 +17,7 @@
 	  <ul class="title-area">
 	    <!-- Title Area -->
 	    <li class="name">
-	      <h1><a href="#">Warhammer 40k Rules </a></h1>
+	      <h1>{{ HTML::link('/', 'Warhammer 40k Rules') }}</h1>
 	    </li>
 	    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 	    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -25,29 +25,7 @@
 
 	  <section class="top-bar-section">
 	    <!-- Left Nav Section -->
-	    <ul class="left">
-	      <li class="divider"></li>
-	      <li class="active"><a href="#">Main Item 1</a></li>
-	      <li class="divider"></li>
-	      <li><a href="#">Main Item 2</a></li>
-	      <li class="divider"></li>
-	      <li class="has-dropdown"><a href="#">Main Item 3</a>
-
-	        <ul class="dropdown">
-	          <li class="has-dropdown"><a href="#">Dropdown Level 1a</a>
-
-	            <ul class="dropdown">
-	              <li><label>Dropdown Level 2 Label</label></li>
-	              <li><a href="#">Dropdown Level 2a</a></li>
-	              <li><a href="#">Dropdown Level 2b</a></li>
-	            </ul>
-	          </li>
-	          <li><a href="#">Dropdown Level 1b</a></li>
-	          <li><a href="#">Dropdown Level 1c</a></li>
-	        </ul>
-	      </li>
-	      <li class="divider"></li>
-	    </ul>
+	    @include('menu')
 
 	  </section>
 	</nav>

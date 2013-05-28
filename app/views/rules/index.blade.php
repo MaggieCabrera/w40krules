@@ -1,6 +1,9 @@
 @section('content')
 
 	<h1>Lista de reglas</h1>
+
+	{{ HTML::link(route('rules.create'), 'Crear regla', ["class"=>'button'])}}
+
 	<ul class="rules">
 		@foreach($rules as $rule)
 			<li>		
@@ -8,4 +11,5 @@
 			</li>
 		@endforeach
 	</ul>
+
 @stop

@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'warhammer',
-			'username'  => 'root',
-			'password'  => 'root',
+			'host'      => 'mysql.milenio41.com',
+			'database'  => 'milenio41_com',
+			'username'  => 'milenio41com',
+			'password'  => '#XbWYWe8',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

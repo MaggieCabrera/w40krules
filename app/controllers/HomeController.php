@@ -2,6 +2,8 @@
 
 class HomeController extends BaseController {
 
+	protected $layout = 'master';
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -15,9 +17,12 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function firstPage()
 	{
-		return View::make('hello');
+		//return View::make('hello');
+		$armies = Army::all();
+
+        $this->layout->content = View::make('home.index', compact('armies'));
 	}
 
 }

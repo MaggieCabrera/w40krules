@@ -19,7 +19,9 @@
 		{{ Form::text('name') }}
 		{{ Form::label('description', 'Description') }}
 		{{ Form::textarea('description') }}
-		{{ Form::submit('Guardar') }}
+		{{ Form::label('army', 'Ejército') }}
+		{{ Form::select('army', array_merge(array(0 => 'Regla Especial (aplicable a cualquier ejército)'),$army), $rule->army) }}
+		{{ Form::submit('Guardar', ["class"=>'button']) }}
 	{{ Form::close() }}
 
 	{{ $errors->first('name') }}

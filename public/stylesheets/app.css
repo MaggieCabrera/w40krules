@@ -6527,3 +6527,8 @@ a.th {
 .f-dropdown.large {
   max-width: 800px;
 }
+
+/* line 49, ../sass/app.scss */
+textarea {
+  height: 200px;
+}

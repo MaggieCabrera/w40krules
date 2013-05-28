@@ -1,11 +1,11 @@
 <?php
 
-Route::get('/', function()
+/*Route::get('/', function()
 {
 	//$rules = DB::table('rules')->get(); //->get() Select * from rules ->first() para el primero
 	//dd($posts);//die and dump
 	return View::make('home.index');
-});
+});*/
 /*
 Route::post('/', function()
 {
@@ -39,4 +39,22 @@ Route::post('/', function()
 
 });*/
 
+Route::get('/', 'HomeController@firstPage');
+
 Route::resource('rules', 'RulesController');
+
+Route::resource('armies', 'ArmiesController');
+
+View::composer('parts.menu', function($view){
+    $view->with('menuitems', Menu::all());
+});
+
+Route::resource('characters', 'CharactersController');
+
+Route::resource('units', 'UnitsController');
+
+Route::resource('weapons', 'WeaponsController');
+
+Route::resource('character_types', 'Character_typesController');
+
+Route::resource('unittypes', 'UnittypesController');

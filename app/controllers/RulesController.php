@@ -24,7 +24,8 @@ class RulesController extends BaseController {
      */
     public function create()
     {
-        $this->layout->content = View::make('rules.create');
+        $this->layout->content = View::make('rules.create')
+            ->with('army', Army::lists('name', 'id'));
     }
 
     /**
@@ -36,6 +37,7 @@ class RulesController extends BaseController {
     {
         $name = Input::get('name');
         $description = Input::get('description');
+        $army = Input::get('army'); 
 
         //Validar
         $v= Rule::validate(array('name' => $name, 'description' => $description));
@@ -54,7 +56,8 @@ class RulesController extends BaseController {
         //añadir a db
         $row = Rule::create(array(
             'name' => $name,
-            'description' => $description
+            'description' => $description,
+            'army' => $army
         ));
 
         //crear un view con el resultado
@@ -88,7 +91,8 @@ class RulesController extends BaseController {
     {
         $rule = Rule::find($id);
 
-        $this->layout->content = View::make('rules.edit', compact('rule'));
+        $this->layout->content = View::make('rules.edit', compact('rule'))
+            ->with('army', Army::lists('name', 'id'));
     }
 
     /**
@@ -101,6 +105,7 @@ class RulesController extends BaseController {
     {
         $name = Input::get('name');
         $description = Input::get('description');
+        $army = Input::get('army'); 
 
         //Validar
         $v= Rule::validate(array('name' => $name, 'description' => $description));
@@ -126,13 +131,15 @@ class RulesController extends BaseController {
 
         $rule->name = $name;
         $rule->description = $description;
+        $rule->army = $army;
 
         $guarda=$rule->save();
 
         //crear un view con el resultado
         if($guarda){
             //return View::make('home.result')->with('name', $row->name);
-            $this->layout->content = View::make('rules.edit', compact('rule'));
+            $this->layout->content = View::make('rules.edit', compact('rule'))
+                ->with('army', Army::lists('name', 'id'));
         }
     }
 

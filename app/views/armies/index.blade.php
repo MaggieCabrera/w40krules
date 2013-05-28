@@ -1,6 +1,6 @@
 @section('content')
 
-	<h1>Elige tu ejército</h1>
+	<h1>Lista de ejércitos</h1>
 
 	<ul class="armies">
 		@foreach($armies as $army)
