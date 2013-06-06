@@ -61,9 +61,14 @@
 	{{ HTML::script('javascripts/foundation/foundation.tooltips.js') }}
 	{{ HTML::script('javascripts/foundation/foundation.topbar.js') }}
 
+	{{ HTML::script('javascripts/vendor/jqueryui.js') }}
+	{{ HTML::script('javascripts/multiselect.js') }}
+
   <script>
   	$(document).foundation();
   </script>
+
+	@yield('footer-scripts')
 
 </body>
 </html>

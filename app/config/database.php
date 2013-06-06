@@ -52,6 +52,18 @@ return array(
 			'prefix'   => '',
 		),
 
+		/*'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'warhammer',
+			'username'  => 'root',
+			'password'  => 'root',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),*/
+
+		
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'mysql.milenio41.com',
@@ -62,6 +74,7 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+		
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

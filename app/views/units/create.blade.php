@@ -10,9 +10,7 @@
 		{{ Form::label('type', 'Tipo') }}
 		{{ Form::select('type', $type) }}
 		{{ Form::label('army', 'Ejército') }}
-		{{ Form::select('army', $army) }}
-
-		<h2>Opciones de unidad:</h2>
+		{{ Form::select('army', $armies) }}
 
 		{{ Form::submit('Guardar', ["class"=>'button']) }}
 	{{ Form::close() }}

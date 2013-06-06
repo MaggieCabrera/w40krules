@@ -10,13 +10,13 @@ class Unit extends Eloquent {
     //relación 1-n donde 1 es units y n es army
     public function armies()
     {
-        return $this->belongsTo('Army');
+        return $this->belongsTo('Army', 'army');
     }
 
     //relación 1-n donde 1 es units y n es unittype
     public function unittypes()
     {
-        return $this->belongsTo('Unittype');
+        return $this->belongsTo('Unittype', 'type');
     }
 
     //Relación n-m unit-character

@@ -16,7 +16,7 @@ class Army extends Eloquent {
     //relación 1-n donde 1 es units y n es army
     public function units()
     {
-        return $this->hasMany('Unit');
+        return $this->hasMany('Unit', 'army');
     }
 
 }

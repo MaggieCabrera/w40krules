@@ -2,6 +2,7 @@
 
 class UnittypesController extends BaseController {
 
+    protected $layout = 'master';
     /**
      * Display a listing of the resource.
      *

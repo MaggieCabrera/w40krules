@@ -11,7 +11,13 @@ class UnitsController extends BaseController {
      */
     public function index()
     {
-        //
+        //$units = Unit::all();
+
+        //$this->layout->content = View::make('units.index', compact('units'));
+        $armies = Army::with('units')->get();
+        
+        $this->layout->content = View::make('units.index', compact('armies'));
+
     }
 
     /**
@@ -22,7 +28,7 @@ class UnitsController extends BaseController {
     public function create()
     {
         $this->layout->content = View::make('units.create')
-            ->with('army', Army::lists('name', 'id'))
+            ->with('armies', Army::lists('name', 'id'))
             ->with('type', Unittype::lists('name', 'id'));
     }
 
@@ -34,33 +40,36 @@ class UnitsController extends BaseController {
     public function store()
     {
         $name = Input::get('name');
-        $armies = Input::get('armies');
+        $value = Input::get('value');
+        $type = Input::get('type');
+        $army = Input::get('army');
 
         //Validar
-        $v= Rule::validate(array('name' => $name, 'description' => $description));
+       // $v= Unit::validate(array('name' => $name, 'value' => $value));
 
-        if($v!==true){
+       // if($v!==true){
             //return Redirect::to('/')->withErrors($v);
-            return 'error validacion';
-        }
+            //return 'error validacion';
+       // }
 
         //Comprobar que no está repetido
-        $record = Rule::where('name', 'LIKE', $name)->first();
+        $record = Unit::where('name', 'LIKE', $name)->first();
         if($record){
             return 'ya existe!';
         }
 
         //añadir a db
-        $row = Rule::create(array(
+        $row = Unit::create(array(
             'name' => $name,
-            'description' => $description
+            'value' => $value,
+            'type' => $type,
+            'army' => $army
         ));
 
         //crear un view con el resultado
         if($row){
-            $rules = Rule::all();
-
-            $this->layout->content = View::make('rules.index', compact('rules'));
+            $armies = Army::with('units')->get();
+            $this->layout->content = View::make('units.index', compact('armies'));
         }
     }
 
@@ -72,7 +81,9 @@ class UnitsController extends BaseController {
      */
     public function show($id)
     {
-        //
+        $unit = Unit::find($id);
+
+        $this->layout->content = View::make('units.show', compact('unit'));
     }
 
     /**
@@ -83,7 +94,12 @@ class UnitsController extends BaseController {
      */
     public function edit($id)
     {
-        //
+        $unit = Unit::find($id);
+
+        $this->layout->content = View::make('units.edit', compact('unit'))
+            ->with('armies', Army::lists('name', 'id'))
+            ->with('type', Unittype::lists('name', 'id'))
+            ->with('rules', Rule::lists('name', 'id'));
     }
 
     /**
@@ -94,7 +110,29 @@ class UnitsController extends BaseController {
      */
     public function update($id)
     {
-        //
+        $name = Input::get('name');
+        $value = Input::get('value');
+        $type = Input::get('type');
+        $army = Input::get('army');
+
+
+
+        $unit = Unit::find($id);
+
+        $unit->name = $name;
+        $unit->value = $value;
+        $unit->type = $type;
+        $unit->army = $army;
+
+        $guarda=$unit->save();
+
+        //crear un view con el resultado
+        if($guarda){
+            //return View::make('home.result')->with('name', $row->name);
+            $this->layout->content = View::make('units.edit', compact('unit'))
+                ->with('army', Army::lists('name', 'id'))
+                ->with('type', Unittype::lists('name', 'id'));
+        }
     }
 
     /**

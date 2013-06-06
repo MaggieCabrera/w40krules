@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateUnitsTable extends Migration {
+class AddArmyToUnitTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class CreateUnitsTable extends Migration {
      */
     public function up()
     {
-        Schema::create('units', function(Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-			$table->integer('type');
-            $table->timestamps();
+        Schema::table('units', function(Blueprint $table) {
+            $table->integer('army');
         });
     }
 
@@ -27,7 +24,9 @@ class CreateUnitsTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('units');
+        Schema::table('units', function(Blueprint $table) {
+            $table->dropColumn('army');
+        });
     }
 
 }
